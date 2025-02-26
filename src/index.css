@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+.font-perso {
+  font-family: "Rubik Mono One", monospace;
+}
+
+.font-Abel {
+  font-family: "Abel", monospace;
+}
