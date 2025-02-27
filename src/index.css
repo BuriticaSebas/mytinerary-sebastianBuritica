@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+body{
+    background-color: black;
+}
+
 .font-perso {
   font-family: "Rubik Mono One", monospace;
 }

@@ -1,7 +1,10 @@
 function SectionCarrusel(){
     return (
         <>
-        <h1>this is carrusel espace</h1>
+        <div className="w-full h-64 bg-white text-black" >
+            <h1>hola</h1>
+            
+            </div>
         </>
     )
 }

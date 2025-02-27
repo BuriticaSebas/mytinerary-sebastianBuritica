@@ -7,7 +7,7 @@ function MainLayout(){
     return(
         <>
         <Header/>
-        <Outlet />
+        <Outlet/>
         <Footer/>
         </>
     )

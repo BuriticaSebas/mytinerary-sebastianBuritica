@@ -4,7 +4,7 @@ import CalltoAction2 from "../components/CalltoAction2"
 function Home(){
     return(
         <>
-        <Carrusel></Carrusel>
+        <Carrusel/>
         <CalltoAction2/>
         </>
     )

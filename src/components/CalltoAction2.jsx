@@ -1,7 +1,7 @@
 function CallAction2(){
     return(
         <>
-            <h1> this is call to action</h1>
+            <h1 className="text-white"> this is call to action</h1>
         </>
     )
 }
