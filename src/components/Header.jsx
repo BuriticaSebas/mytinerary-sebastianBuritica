@@ -1,39 +1,40 @@
 import ImagenFondo from "../assets/welcome2.jpg";
-
 import Navbar from "./Navbar";
+
+
 
 
 function Header() {
   return (
-    <>
-      <div className="relative px-2 py-2 w-full h-100 md:h-dvh ">
+    <div className="relative px-4 py-4 w-full min-h-screen md:h-dvh flex flex-col  ">
+      
+      <Navbar></Navbar>
+
+      <div className="h-auto flex flex-col justify-center items-center text-center flex-grow z-10">
+        <div className="z-20 bg-stone-400/30 rounded-xl ">
+        <h1 className="text-white font-perso text-[clamp(1.5rem,5vw,20rem)] ">My</h1>
+        <h1 className="text-white font-perso text-[clamp(1.5rem,5vw,20rem)] ">Tineraries</h1>
+
+        <p className="  text-white font-Abel text-xl mt-4  md:text-4xl ">
+          "Find your perfect trip, designed by insiders who know and love their cities!"
+        </p>
         
-        <Navbar></Navbar>
+        <button className="px-4 py-2 bg-blue-600 text-black rounded-full mt-5 font-perso text-lg md:text-xl">
+          Explore now!
+        </button>
 
-        <div className="md:top-20 md:left-6 absolute z-10">
-          <h1 className="text-white font-perso text-[clamp(1.5rem,5vw,20rem)]">
-            My
-          </h1>
-          <h1 className="text-white font-perso text-[clamp(1.5rem,5vw,20rem)]">
-            Tineraries
-          </h1>
         </div>
-
-
-        <div className="text-center  absolute z-40    top-40 left-1   md:top-90   md:w-118">
-          <p className="text-white  font-Abel  md:text-4xl">"Find your perfect trip, designed by insiders who know and love their cities!"</p>
-          <button className="px-3 py-2  bg-white rounded-full mt-3  font-perso text-[10px] md:text-[20px] md:mt-7 ">Explore now! </button>
-        </div>
-
-
-        <div
-          className="absolute z-0 inset-0 w-full h-full bg-cover bg-center brightness-50 blur-[2px] md:blur-none md:brightness-50   md:w-2/3 md:h-full md:inset-auto  md:top-0 md:right-0 "
-          style={{ backgroundImage: `url(${ImagenFondo})` }}
-        ></div>
+        
       </div>
-    </>
+
+     
+      <div className=" absolute inset-0 w-full h-full bg-cover bg-center brightness-50 blur-[2px] md:blur-none md:brightness-100"
+        style={{ backgroundImage: `url(${ImagenFondo})` }}>
+      </div>
+    </div>
   );
 }
+
 
 export default Header;
 
