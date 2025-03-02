@@ -21,28 +21,33 @@ function SectionCarrusel({ posicionActual, cambioPosicion, images }) {
   };
 
   return (
-    <div className="w-full flex flex-col text-center text-black p-2">
+    <div className="w-full  flex flex-col text-center text-black p-2">
       <h3 className="font-perso text-white md:my-3 text-2xl">
         Popular My Tineraries
       </h3>
 
-      <div className="flex justify-evenly w-full h-full mt-[1rem]">
-        <button className="text-white" onClick={slideAnterior}>
+      <div className="flex justify-between items-center w-full mt-[1rem] gap-2">
+        <button className="text-white flex-shrink-0" onClick={slideAnterior}>
           <FaArrowAltCircleLeft size={30} className="hover:text-zinc-400" />
         </button>
 
-        <div className="w-3/4 h-50 text-white flex flex-wrap gap-4 justify-center content-center">
+        <div className="w-full max-w-4xl flex flex-wrap gap-4 justify-center items-center">
           {slideEnvista.map((objeto, posicion) => (
             <div
               key={posicion}
-              className="w-[6rem] rounded-lg bg-white h-[6rem] bg-cover bg-center  md:w-[8rem] md:h-[8rem] lg:w-[15rem] lg:h-[15rem] min-[1100px]:w-[6rem] min-[1100px]:h-[6rem]"
+              className="w-24 h-24 rounded-lg bg-white bg-cover bg-center 
+                         sm:w-28 sm:h-28 
+                         md:w-32 md:h-32 
+                         lg:w-52 lg:h-52 
+                        "
               style={{
                 backgroundImage: `url(${objeto.imagen})`,
               }}
             ></div>
           ))}
         </div>
-        <button className="text-white" onClick={siguienteSlide}>
+
+        <button className="text-white flex-shrink-0" onClick={siguienteSlide}>
           <FaArrowAltCircleRight size={30} className="hover:text-zinc-400" />
         </button>
       </div>
