@@ -9,7 +9,7 @@ function CallAction2() {
           <img src={welcome} alt="" className="rounded-3xl sm:1/4" />
         </div>
 
-        <div className="p-2 sm:w-2/5  ">
+        <div className="p-2 sm:w-2/5  text-black ">
           <h3 className="font-Perso font-black text-[1.5rem] p-2">
             Here you will find your best plan for traveling
           </h3>
@@ -21,8 +21,8 @@ function CallAction2() {
             mountain cabins and lakeside lodges to stunning cities.
           </p>
 
-          <button className="px-2 py-1 bg-blue-600 text-black rounded-full mt-5 font-Perso md:text-xl shadow-[0px_1px_19px_7px_#7a7a7a]">
-            <Link to="/cities">Explore Now !</Link>
+          <button className="font-perso px-2 py-1 bg-[#d1d1d1] text-black rounded-full mt-5  md:text-xl shadow-[0px_1px_19px_7px_#7a7a7a] hover:opacity-50 hover:bg-blue-200">
+            <Link to="/cities" >Explore Now!</Link>
           </button>
         </div>
       </div>

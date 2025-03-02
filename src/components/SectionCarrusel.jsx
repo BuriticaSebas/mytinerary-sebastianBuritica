@@ -1,5 +1,6 @@
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
+import { useEffect } from "react";
 
 function SectionCarrusel({ posicionActual, cambioPosicion, images }) {
   const slideEnvista = images[posicionActual].items;
@@ -20,16 +21,24 @@ function SectionCarrusel({ posicionActual, cambioPosicion, images }) {
     }
   };
 
+  useEffect(() => {
+    const intervalo = setInterval(() => {
+      siguienteSlide();
+    }, 3000);
+
+    return () => clearInterval(intervalo);
+  }, [posicionActual])
+
   return (
     <div className="w-full  flex flex-col text-center text-black p-2">
-      <h3 className="font-perso text-white md:my-3 text-2xl">
+      <h3 className="font-perso text-black md:my-3 text-2xl">
         Popular My Tineraries
       </h3>
 
       <div className="" >
         <div className="flex justify-evenly items-center w-full mt-[1rem] gap-2">
         <button className="text-white flex-shrink-0" onClick={slideAnterior}>
-          <FaArrowAltCircleLeft size={30} className="hover:text-zinc-400" />
+          <FaArrowAltCircleLeft size={30} className="hover:text-zinc-400 text-black" />
         </button>
 
         <div className="w-full max-w-4xl flex flex-wrap gap-5 justify-center items-center ">
@@ -42,8 +51,8 @@ function SectionCarrusel({ posicionActual, cambioPosicion, images }) {
               </div>
 
               <div className="mt-1 p-1 text-white">
-                <p> <strong>Ciudad</strong> : {objeto.ciudad}</p>
-                <p> <strong>Pais</strong>: {objeto.pais}</p>
+                <p> <strong>City</strong> : {objeto.ciudad}</p>
+                <p> <strong>Country</strong>: {objeto.pais}</p>
 
               </div>
               
@@ -53,13 +62,13 @@ function SectionCarrusel({ posicionActual, cambioPosicion, images }) {
         
 
         <button className="text-white flex-shrink-0" onClick={siguienteSlide}>
-          <FaArrowAltCircleRight size={30} className="hover:text-zinc-400" />
+          <FaArrowAltCircleRight size={30} className="hover:text-zinc-400 text-black" />
         </button>
           
         </div>
         
         <div className="text-white font-perso flex gap-3 justify-center p-3">
-          <div>{posicionActual +1 }</div>
+          <div className="px-3 py-1 rounded-full bg-[#6d6d6d]">{posicionActual +1 }</div>
         </div>
 
 
