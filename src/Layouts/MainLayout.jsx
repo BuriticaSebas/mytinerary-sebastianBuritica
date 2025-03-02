@@ -3,10 +3,10 @@ import { Outlet } from "react-router-dom"
 import Footer from "../components/Footer"
 
 
+
 function MainLayout(){
     return(
         <>
-        <Header/>
         <Outlet/>
         <Footer/>
         </>
@@ -14,3 +14,4 @@ function MainLayout(){
 }
 
 export default MainLayout
+

@@ -12,7 +12,8 @@ import portugal from "../assets/ciudades/portugal.jpg";
 import reino_unido from "../assets/ciudades/reino unido.jpg";
 import turquia from "../assets/ciudades/turquia.jpg";
 import medellin from "../assets/ciudades/medellin.jpg"
-import { useMemo, useRef, useState } from "react";
+import {useRef, useState } from "react";
+import Header from "../components/Header";
 
 
 
@@ -49,6 +50,7 @@ function Home() {
 
   return (
     <>
+      <Header></Header>
       <Carrusel posicionActual = {posicionActual} cambioPosicion = {cambioPosicion} images={imagesCiudades.current} />
       <CalltoAction2 />
     </>
