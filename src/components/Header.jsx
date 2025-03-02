@@ -21,7 +21,7 @@ function Header() {
             their cities!"
           </p>
 
-          <button className="px-4 py-2 bg-blue-600 text-black rounded-full mt-5 font-perso text-lg md:text-xl">
+          <button className="px-4 py-2 bg-blue-600 text-black rounded-full mt-5 font-perso text-lg md:text-xl shadow-[0px_1px_19px_7px_#7a7a7a]">
             <Link to="/cities">Explore Now !</Link>
           </button>
         </div>

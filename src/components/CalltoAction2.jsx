@@ -5,8 +5,8 @@ function CallAction2() {
   return (
     <>
       <div className="w-full  text-white flex flex-col sm:flex-row sm:items-center justify-center text-center p-5">
-        <div className="w-full sm:w-3/5">
-          <img src={welcome} alt="" className="rounded-3xl w-full" />
+        <div className="w-full sm:w-2/5 ">
+          <img src={welcome} alt="" className="rounded-3xl sm:1/4" />
         </div>
 
         <div className="p-2 sm:w-2/5  ">
@@ -21,7 +21,7 @@ function CallAction2() {
             mountain cabins and lakeside lodges to stunning cities.
           </p>
 
-          <button className="px-2 py-1 bg-blue-600 text-black rounded-full mt-5 font-Perso md:text-xl">
+          <button className="px-2 py-1 bg-blue-600 text-black rounded-full mt-5 font-Perso md:text-xl shadow-[0px_1px_19px_7px_#7a7a7a]">
             <Link to="/cities">Explore Now !</Link>
           </button>
         </div>

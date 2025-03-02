@@ -12,7 +12,7 @@ function Navbar() {
 
         {/* Botón hamburguesa visible solo en pantallas pequeñas */}
         <button
-          className="sm:hidden text-white focus:outline-none"
+          className="sm:hidden text-white focus:outline-none "
           onClick={() => setIsOpen(!isOpen)}
         >
           <svg
