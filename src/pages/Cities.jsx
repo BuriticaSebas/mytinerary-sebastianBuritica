@@ -1,4 +1,3 @@
-import imgCons from "../assets/construc.png";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import ImagenFondo from "../assets/welcome4.jpg";
@@ -12,9 +11,9 @@ function Cities() {
   useEffect(() => {
     const obtenerCiudades = async () => {
       const response = await fetch(
-        "http://192.168.1.2:8080/mytinerary/city/allCities"
+        "http://localhost:8080/mytinerary/city/allCities"
       );
-
+      
       const dataObject = await response.json();
 
       const dataArray = dataObject.response;

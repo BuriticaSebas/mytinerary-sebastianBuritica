@@ -47,13 +47,11 @@ function SectionCarrusel({ posicionActual, cambioPosicion, images }) {
               <div key={posicion}
               className="w-full h-full rounded-2xl  bg-cover bg-center sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-52 lg:h-52 ">
                    <img src={objeto.imagen} alt="Ciudades class" className="h-full rounded-2xl " />
-
               </div>
 
               <div className="mt-1 p-1 text-white">
                 <p> <strong>City</strong> : {objeto.ciudad}</p>
                 <p> <strong>Country</strong>: {objeto.pais}</p>
-
               </div>
               
             </div>
@@ -78,24 +76,3 @@ function SectionCarrusel({ posicionActual, cambioPosicion, images }) {
 }
 
 export default SectionCarrusel;
-
-
-
-
-
-/*
-1- el oprimir editar se debe cambiar el componente por un input en el que que tenga un boton guardar
-
-
-2- al oprimir guardar el nuevo valor ingresado se debe guardar en el array 
-3- me debe aparecer la task cambiada con la interfaz inicial 
-
-
-
-
-
-*/
-
-
-
-
