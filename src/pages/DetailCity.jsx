@@ -51,3 +51,4 @@ const DetailCity = ()=>{
 }
 
 export default DetailCity
+

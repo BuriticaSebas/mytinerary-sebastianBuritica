@@ -8,11 +8,7 @@ const Cards = ({cities}) => {
   
 
   return (
-    <>
-
-
-
-      
+    <>      
       <div className="bg-black rounded-xl col-span-1 flex flex-col justify-between h-[288px] md:w-[330px] md:h-[480px] transition  duration-70 ease-in hover:-translate-y-1 hover:scale-105 ">
         <div className="w-full rounded-xl h-1/2 relative">
           <img src={cities.imageUrl} alt="" className="w-full h-full rounded-xl" />
