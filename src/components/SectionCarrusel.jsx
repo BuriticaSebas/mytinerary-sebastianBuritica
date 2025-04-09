@@ -14,6 +14,11 @@ function SectionCarrusel() {
     (state) => state.carrusel
   );
 
+  console.log("Estas son las citys", cities )
+
+  const citiesToShow = cities.slice(currentPosition * 4, currentPosition * 4 + 4);
+
+
   useEffect(() => {
     if (status !== statusSoli.IDLE) return;
 
@@ -22,7 +27,7 @@ function SectionCarrusel() {
 
   useEffect(() => {
     const intervalo = setInterval(() => {
-      dispatch(nextSlide);
+      dispatch(nextSlide());
     }, 3000);
 
     return () => clearInterval(intervalo);
@@ -38,7 +43,7 @@ function SectionCarrusel() {
         <div className="flex justify-evenly items-center w-full mt-[1rem] gap-2">
           <button
             className="text-white flex-shrink-0"
-            onClick={() => dispatch(backSlide)}
+            onClick={() => dispatch(backSlide())}
           >
             <FaArrowAltCircleLeft
               size={30}
@@ -46,9 +51,9 @@ function SectionCarrusel() {
             />
           </button>
 
-          <div className="w-full max-w-4xl flex flex-wrap gap-5 justify-center items-center ">
+          <div className="w-full max-w-4xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 ">
             {status === statusSoli.SUCCEDED &&
-              cities.map((objeto, posicion) => (
+              citiesToShow.map((objeto, posicion) => (
                 <div
                   key={posicion}
                   className="bg-stone-800 rounded-2xl font-Mohave hover:shadow-[0px_1px_19px_7px_#7a7a7a] transition  duration-70 ease-in hover:-translate-y-1 hover:scale-110 "
@@ -60,7 +65,7 @@ function SectionCarrusel() {
                     <img
                       src={objeto.imageUrl}
                       alt="Ciudades class"
-                      className="h-full rounded-2xl "
+                      className="h-full  rounded-2xl "
                     />
                   </div>
 
@@ -88,7 +93,7 @@ function SectionCarrusel() {
 
           <button
             className="text-white flex-shrink-0"
-            onClick={() => dispatch(nextSlide)}
+            onClick={() => dispatch(nextSlide())}
           >
             <FaArrowAltCircleRight
               size={30}

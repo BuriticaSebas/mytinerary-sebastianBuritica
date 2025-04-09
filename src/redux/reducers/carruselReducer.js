@@ -29,14 +29,17 @@ const carruselReducer = createReducer(carrusel, (builder) => {
   });
 
   builder.addCase(backSlide, (state) => {
+    const totalSlides = Math.ceil(state.cities.length / 4);
     state.currentPosition =
-      state.currentPosition === 0 ? 2 : state.currentPosition - 1;
+      (state.currentPosition - 1 + totalSlides) % totalSlides;
   });
-
+  
   builder.addCase(nextSlide, (state) => {
-    state.currentPosition =
-      state.currentPosition === 2 ? 0 : state.currentPosition + 1;
+    const totalSlides = Math.ceil(state.cities.length / 4);
+    state.currentPosition = (state.currentPosition + 1) % totalSlides;
   });
+  
+
 });
 
 export default carruselReducer;

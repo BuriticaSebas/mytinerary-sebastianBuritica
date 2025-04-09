@@ -2,35 +2,42 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import ImagenFondo from "../assets/welcome4.jpg";
 import Cards from "../components/Cards.jsx";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { changeSearch } from "../redux/actions/searchCityA.js";
+import { statusSoli } from "../redux/reducers/carruselReducer.js";
+import { getCities } from "../redux/actions/carruseactions.js";
 
 function Cities() {
-  const [data, setData] = useState([]);
-  const [search, setSearch] = useState("");
+
+  const dispatch = useDispatch()
+
+  const { cities, status } = useSelector(
+    (state) => state.carrusel
+  );
+
+  const {busqueda} = useSelector((state)=> state.searchCity)
+
+ console.log(busqueda)
+  
+  console.log("Estas son las citys", cities )
 
   useEffect(() => {
-    const obtenerCiudades = async () => {
-      const response = await fetch(
-        "http://localhost:8080/mytinerary/city/allCities"
-      );
-      
-      const dataObject = await response.json();
+    if (status !== statusSoli.IDLE) return;
 
-      const dataArray = dataObject.response;
+    dispatch(getCities());
+  }, [dispatch, status]);
 
-      setData(dataArray);
-
-      console.log("datos recibidos", dataArray);
-    };
-
-    obtenerCiudades();
-  }, []);
 
   const buscadorCiudad = (letras) => {
-    return data.filter((city) =>
+    return cities.filter((city) =>
       city.name.toLowerCase().includes(letras.toLowerCase())
     );
   };
+
+  const ciudadesFiltradas = buscadorCiudad(busqueda);
+
 
   return (
     <>
@@ -61,14 +68,14 @@ function Cities() {
             type="text"
             className="bg-black rounded-lg  text-white p-2 m-auto"
             placeholder="Ingresa una Ciudad"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            value={busqueda}
+            onChange={(e) => dispatch(changeSearch(e.target.value))}
           />
         </div>
 
         <div className="w-full grid grid-cols-2 content-center gap-4 md:gap-3 md:grid-cols-2 lg:gap-5 lg:grid-cols-3 xl:grid-cols-4 text-center">
-          {buscadorCiudad(search).length > 0 ? (
-            buscadorCiudad(search).map((city) => (
+          {ciudadesFiltradas.length > 0 ? (
+           ciudadesFiltradas.map((city) => (
               <Cards key={city._id} cities={city} />
             ))
           ) : (
