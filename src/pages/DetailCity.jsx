@@ -15,23 +15,16 @@ import { TbHash } from "react-icons/tb";
 const DetailCity = () => {
   const location = useLocation();
   const city = location.state?.city;
-
-  const id_ciudad = city._id;
-  console.log(id_ciudad);
+  const idCity = city._id;
 
   const { itineraries, status, isOpen } = useSelector(
     (state) => state.itinerary
   );
 
   const dispatch = useDispatch();
-
   useEffect(() => {
-    if (status !== statusSoli.IDLE) return;
-
-    dispatch(getItinerary(id_ciudad));
-  }, []);
-
-  console.log("estos son los itinerarios", itineraries);
+    dispatch(getItinerary(idCity));
+  }, [idCity, dispatch]);
 
   return (
     <>
@@ -58,50 +51,62 @@ const DetailCity = () => {
         </div>
 
         <div className="flex flex-col items-center justify-center w-full gap-3 ">
-          {itineraries.map((iti) => {
-            return (
-              <div className="bg-gradient-to-r from-slate-900 to-slate-700 w-full sm:w-5/6 rounded-2xl flex justify-center">
-                <div className="flex flex-col text-white p-5 text-center  gap-6">
-                  <div>
-                    <h1 className="font-black">{iti.title}</h1>
-                  </div>
+          {status === statusSoli.SUCCEDED &&
+            itineraries.map((iti) => {
+              return (
+                <div
+                  key={iti._id}
+                  className="bg-gradient-to-r from-slate-900 to-slate-700 w-full sm:w-5/6 rounded-2xl flex justify-center"
+                >
+                  <div className="flex flex-col text-white p-5 text-center  gap-6">
+                    <div>
+                      <h1 className="font-black">{iti.title}</h1>
+                    </div>
 
-                  <div className="flex flex-col items-center">
-                    <span>
-                      <img src={iti.imgUser} alt="" className="rounded-full" />
-                    </span>
-                    <span className="font-bold">By: {iti.nameUser}</span>
-                  </div>
+                    <div className="flex flex-col items-center">
+                      <span>
+                        <img
+                          src={iti.imgUser}
+                          alt=""
+                          className="rounded-full"
+                        />
+                      </span>
+                      <span className="font-bold">By: {iti.nameUser}</span>
+                    </div>
 
-                  <div className="flex justify-between gap-4">
-                    <button className="flex items-center gap-1">
-                      <FaRegHeart />
-                      {iti.likes}
-                    </button>
-                    <span className="flex items-center gap-1">
-                      <FaRegClock />
-                      {iti.duration} Hours
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <PiMoneyFill />
-                      {iti.price}
-                    </span>
-                  </div>
+                    <div className="flex justify-between gap-4">
+                      <button className="flex items-center gap-1">
+                        <FaRegHeart />
+                        {iti.likes}
+                      </button>
+                      <span className="flex items-center gap-1">
+                        <FaRegClock />
+                        {iti.duration} Hours
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <PiMoneyFill />
+                        {iti.price}
+                      </span>
+                    </div>
 
-                  <div className="flex gap-2 justify-center">
-                    {iti.hashtags.map((tag, i) => (
-                      <span className="flex items-center gap-1" key={i}> <TbHash />{tag}</span>
-                    ))}
-                  </div>
-                  <div>
-                    <button className="bg-white px-3 py-1 rounded-2xl text-black font-black">
-                      View All
-                    </button>
+                    <div className="flex gap-2 justify-center">
+                      {iti.hashtags.map((tag, i) => (
+                        <span className="flex items-center gap-1" key={i}>
+                          {" "}
+                          <TbHash />
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <div>
+                      <button className="bg-white px-3 py-1 rounded-2xl text-black font-black">
+                        View All
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
 
         <button className="m-5 p-2  bg-stone-900 rounded-2xl font-perso text-white">

@@ -12,9 +12,8 @@ const initialState = {
 const itineraryR = createReducer(initialState, (builder) =>{
 
     builder.addCase(getItinerary.fulfilled, (state, action) =>{
-        console.log("payload" , action.payload)
         state.itineraries = action.payload
-     state.status = statusSoli.SUCCEDED
+        state.status = statusSoli.SUCCEDED
     })
 
     builder.addCase(getItinerary.pending, (state, action)=>{
