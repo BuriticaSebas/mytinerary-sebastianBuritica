@@ -14,7 +14,13 @@ function SectionCarrusel() {
     (state) => state.carrusel
   );
 
-  console.log("Estas son las citys", cities )
+  const cityData = cities.map(city => ({
+    id: city._id,
+    name: city.name
+  }));
+  
+  console.log(cityData);
+  
 
   const citiesToShow = cities.slice(currentPosition * 4, currentPosition * 4 + 4);
 

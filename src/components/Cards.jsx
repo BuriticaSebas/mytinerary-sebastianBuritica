@@ -30,7 +30,7 @@ const Cards = ({cities}) => {
         </div>
 
         <div className="text-center">
-          <p className="[font-family:'Inter-ExtraBold',Helvetica] font-extrabold text-black mx-1 text-white">{cities.name}, {cities.country}</p>
+          <p className="[font-family:'Inter-ExtraBold',Helvetica] font-extrabold mx-1 text-white">{cities.name}, {cities.country}</p>
           <div className="h-[2px] w-full bg-white"></div>
         </div>
 

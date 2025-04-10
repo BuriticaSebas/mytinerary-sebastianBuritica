@@ -2,7 +2,10 @@ import ImagenFondo from "../assets/welcome2.jpg";
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 
+
 function Header() {
+  
+
   return (
     <div className="relative px-4 py-4 w-full min-h-screen md:h-dvh flex flex-col  ">
       <Navbar></Navbar>
