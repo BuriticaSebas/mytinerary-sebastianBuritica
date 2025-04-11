@@ -1,11 +1,11 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { openActivities, getItinerary } from "../actions/itineraryA";
+import { getItinerary } from "../actions/itineraryA";
 import { statusSoli } from "./carruselReducer";
 
 const initialState = {
     itineraries: [],
-    isOpen: false,
-    status: statusSoli.IDLE
+    status: statusSoli.IDLE,
+    like: 0
 }
 
 
@@ -24,10 +24,6 @@ const itineraryR = createReducer(initialState, (builder) =>{
         state.status = statusSoli.FAILED
     })
 
-
-    builder.addCase(openActivities, (state) =>{
-        state.isOpen = !state.isOpen;
-    })
 })
 
 export default itineraryR

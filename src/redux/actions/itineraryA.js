@@ -1,6 +1,5 @@
-import { createAction,createAsyncThunk } from "@reduxjs/toolkit";
+import {createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-const openActivities = createAction("itinerary/openActivities")
 
 const getItinerary = createAsyncThunk("itinerary/getItinerary", async(cityId)=>{
     console.log("Verificando qué id le llega al axios", cityId)
@@ -10,4 +9,4 @@ const getItinerary = createAsyncThunk("itinerary/getItinerary", async(cityId)=>{
     return response.data.response
 })
 
-export {openActivities, getItinerary}
+export {getItinerary}

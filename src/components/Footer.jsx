@@ -23,8 +23,8 @@ function Footer() {
       <div className="flex flex-col gap-2 p-3 text-center">
         <h6 className="font-extrabold">CONTACT US</h6>
 
-        <p className="hover:text-blue-200">Phone: 3107263410</p>
-        <p className="hover:text-blue-200">Correo: jhoseburitica40@gmail.com</p>
+        <p className="hover:text-blue-200">Phone: 3107263417</p>
+        <p className="hover:text-blue-200">Correo: jhoica40@gmail.com</p>
       </div>
     </div>
   );
