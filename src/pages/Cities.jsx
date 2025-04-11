@@ -50,7 +50,7 @@ function Cities() {
         </div>
 
         <div
-          className=" absolute inset-0 w-full h-full bg-cover bg-center bg-center brightness-50 blur-[2px] md:blur-none "
+          className=" absolute inset-0 w-full h-full bg-cover bg-center  brightness-50 blur-[2px] md:blur-none "
           style={{ backgroundImage: `url(${ImagenFondo})` }}
         ></div>
       </div>
