@@ -32,10 +32,10 @@ const Cards = ({cities}) => {
           <p className="font-semibold">{cities.language}</p>
         </div>
 
-        {/* Divider */}
+        
         <div className="my-4 h-[1px] bg-white opacity-40"></div>
 
-        {/* Botón */}
+        
         <button className=" bg-blue-600 text-white py-2 px-4 rounded-full font-semibold text-sm hover:bg-blue-900 transition-all duration-300">
           <Link to="/detailCity" state={{ city: cities }}>Explore Now!</Link>
         </button>

@@ -130,7 +130,7 @@ const DetailCity = () => {
                     {openCardId === iti.id ? "Hide" : "View All"}
                     </button>
 
-                     {/* Mostrar información adicional solo si isOpen es true */}
+                    
                      {openCardId === iti.id && (
                       <div className="w-full mt-4 bg-gray-700 text-white p-4 rounded-lg transition-all duration-500 ease-in-out">
                        <img src={Construction} alt="" />

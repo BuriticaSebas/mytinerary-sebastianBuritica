@@ -7,13 +7,13 @@ function Header() {
     <div className="relative w-full min-h-screen flex flex-col">
       <Navbar />
 
-      {/* Fondo */}
+      
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-center brightness-50"
         style={{ backgroundImage: `url(${ImagenFondo})` }}
       ></div>
 
-      {/* Contenido */}
+   
       <div className="relative flex-grow flex items-center justify-center px-6 text-center z-10">
         <div className="max-w-3xl">
           <h1 className="text-white font-bold text-[clamp(2rem,6vw,5rem)] leading-tight">
