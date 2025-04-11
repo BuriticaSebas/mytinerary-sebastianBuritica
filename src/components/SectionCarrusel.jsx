@@ -22,7 +22,7 @@ function SectionCarrusel() {
 
   console.log(cityData);
 
-  const isMobile = useMediaQuery({ maxWidth: 639 }); // menor a 640px
+  const isMobile = useMediaQuery({ maxWidth: 639 });
   const itemsPerSlide = isMobile ? 1 : 4;
 
   const citiesToShow = cities.slice(
@@ -51,7 +51,6 @@ function SectionCarrusel() {
       </h3>
 
       <div className="relative flex flex-col md:flex-row items-center justify-center w-full gap-4">
-        {/* Carrusel de ciudades */}
         <div className="w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {status === statusSoli.SUCCEDED &&
             citiesToShow.map((objeto, posicion) => (
@@ -84,7 +83,6 @@ function SectionCarrusel() {
         </div>
 
         <div className="flex justify-between  gap-2 sm:gap-0  sm:px-5 absolute w-full ">
-          {/* Botón izquierdo */}
           <button
             className="text-white hover:text-blue-300 transition transform "
             onClick={() => dispatch(backSlide())}
@@ -92,7 +90,6 @@ function SectionCarrusel() {
             <IoIosArrowBack size={40} className="text-white drop-shadow-md" />
           </button>
 
-          {/* Botón derecho */}
           <button
             className="text-white hover:text-blue-300"
             onClick={() => dispatch(nextSlide())}
