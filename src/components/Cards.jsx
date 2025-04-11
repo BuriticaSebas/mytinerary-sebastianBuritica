@@ -8,58 +8,42 @@ const Cards = ({cities}) => {
   
 
   return (
-    <>
-
-
-
+    <>      
+   <div className="bg-gradient-to-r from-gray-800 to-black rounded-2xl overflow-hidden w-full md:h-[400px]  transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-xl">
       
-      <div className="bg-black rounded-xl col-span-1 flex flex-col justify-between h-[288px] md:w-[330px] md:h-[480px] transition  duration-70 ease-in hover:-translate-y-1 hover:scale-105 ">
-        <div className="w-full rounded-xl h-1/2 relative">
-          <img src={cities.imageUrl} alt="" className="w-full h-full rounded-xl" />
-
-          <div className="bg-black rounded-lg text-white text-[0.5rem] font-bold w-[3.5rem] flex items-center justify-center absolute top-2 left-1  md:text-[0.8rem] md:w-[4.7rem] ">
-            <SiGooglemaps />
-            <p className="">{cities.country}</p>
-          </div>
-
-          <div className="bg-white text-black flex  justify-between p-1 rounded-b-lg w-4/5 m-auto">
-            <div className="flex gap-1 items-center">
-              <GrLanguage className="text-[0.7rem]" />
-
-              <p className="text-[0.7rem]  md:text-[0.9rem]">Language</p>
-            </div>
-
-            <p className="text-[0.7rem] md:text-[0.9rem]">{cities.language}</p>
-          </div>
-        </div>
-
-        <div className="text-center">
-          <p className="[font-family:'Inter-ExtraBold',Helvetica] font-extrabold text-black mx-1 text-white">{cities.name}, {cities.country}</p>
-          <div className="h-[2px] w-full bg-white"></div>
-        </div>
-
-
-        <button className="p-1 bg-stone-100 text-black inline mx-auto rounded-lg mb-2 text-[0.7rem] font-extrabold  md:text-[0.9rem]  hover:shadow-[0px_2px_6px_4px_#6b6b6b] " >
-
-           <Link to="/detailCity" state={{city: cities}} >Explore Now!</Link>
-           
-        </button>
+      <div className="w-full h-1/2 overflow-hidden relative">
+        <img src={cities.imageUrl} alt={cities.name} className="w-full h-full object-cover rounded-t-2xl" />
       </div>
 
-
-
-
-
-
-
-
-
      
-
-
+      <div className="p-4 pt-6">
       
+        <div className="text-center mb-3">
+          <h3 className="font-extrabold text-2xl text-white">{cities.name}</h3>
+          <p className="font-medium text-sm text-gray-400">{cities.country}</p>
+        </div>
 
+  
+        <div className="flex justify-between items-center text-white text-sm md:text-base">
+          <div className="flex items-center gap-2">
+            <GrLanguage className="text-md" />
+            <p>Language</p>
+          </div>
+          <p className="font-semibold">{cities.language}</p>
+        </div>
+
+        {/* Divider */}
+        <div className="my-4 h-[1px] bg-white opacity-40"></div>
+
+        {/* Botón */}
+        <button className=" bg-blue-600 text-white py-2 px-4 rounded-full font-semibold text-sm hover:bg-blue-900 transition-all duration-300">
+          <Link to="/detailCity" state={{ city: cities }}>Explore Now!</Link>
+        </button>
+      </div>
+    </div>
     </>
   );
 };
 export default Cards;
+
+

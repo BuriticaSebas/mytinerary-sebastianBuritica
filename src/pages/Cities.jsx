@@ -2,35 +2,33 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import ImagenFondo from "../assets/welcome4.jpg";
 import Cards from "../components/Cards.jsx";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { changeSearch } from "../redux/actions/searchCityA.js";
+import { statusSoli } from "../redux/reducers/carruselReducer.js";
+import { getCities } from "../redux/actions/carruseactions.js";
 
 function Cities() {
-  const [data, setData] = useState([]);
-  const [search, setSearch] = useState("");
+  const dispatch = useDispatch();
+
+  const { cities, status } = useSelector((state) => state.carrusel);
+
+  const { busqueda } = useSelector((state) => state.searchCity);
 
   useEffect(() => {
-    const obtenerCiudades = async () => {
-      const response = await fetch(
-        "http://localhost:8080/mytinerary/city/allCities"
-      );
-      
-      const dataObject = await response.json();
+    if (status !== statusSoli.IDLE) return;
 
-      const dataArray = dataObject.response;
-
-      setData(dataArray);
-
-      console.log("datos recibidos", dataArray);
-    };
-
-    obtenerCiudades();
-  }, []);
+    dispatch(getCities());
+  }, [dispatch, status]);
 
   const buscadorCiudad = (letras) => {
-    return data.filter((city) =>
+    return cities.filter((city) =>
       city.name.toLowerCase().includes(letras.toLowerCase())
     );
   };
+
+  const ciudadesFiltradas = buscadorCiudad(busqueda);
 
   return (
     <>
@@ -50,42 +48,74 @@ function Cities() {
         </div>
 
         <div
-          className=" absolute inset-0 w-full h-full bg-cover bg-center  brightness-50 blur-[2px] md:blur-none "
+          className=" absolute inset-0 w-full h-full bg-cover  brightness-50 blur-[2px] md:blur-none "
           style={{ backgroundImage: `url(${ImagenFondo})` }}
         ></div>
       </div>
 
-      <section className="w-full text-black p-5  flex flex-col justify-center">
-        <div className="mb-5 flex justify-center">
-          <input
-            type="text"
-            className="bg-black rounded-lg  text-white p-2 m-auto"
-            placeholder="Ingresa una Ciudad"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
+      <section className="w-full text-black p-5 sm:p-9  flex flex-col justify-center bg-[1d2941]">
+        <div className="mb-8 w-2/ sm:w-1/2 mx-auto text-center">
+          <label
+            htmlFor="citySearch"
+            className="block mb-2 text-xl font-medium text-gray-300"
+          >
+           Search City
+          </label>
+
+          <div className="relative">
+            <input
+              id="citySearch"
+              type="text"
+              value={busqueda}
+              onChange={(e) => dispatch(changeSearch(e.target.value))}
+              className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+              placeholder="Ej: París, Tokio, Nueva York"
+              aria-label="Buscar ciudades por nombre"
+            />
+
+            <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+              <svg
+                className="h-5 w-5 text-gray-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </div>
+          </div>
+
+          {busqueda && (
+            <p className="mt-1 text-xs text-gray-400">
+              Presiona Enter para buscar
+            </p>
+          )}
         </div>
 
-        <div className="w-full grid grid-cols-2 content-center gap-4 md:gap-3 md:grid-cols-2 lg:gap-5 lg:grid-cols-3 xl:grid-cols-4 text-center">
-          {buscadorCiudad(search).length > 0 ? (
-            buscadorCiudad(search).map((city) => (
+        <div className="w-full grid grid-cols-1 sm:p-5 content-center gap-4 md:gap-3 md:grid-cols-2 lg:gap-5 lg:grid-cols-3 xl:grid-cols-4 text-center">
+          {ciudadesFiltradas.length > 0 ? (
+            ciudadesFiltradas.map((city) => (
               <Cards key={city._id} cities={city} />
             ))
           ) : (
             <div className="col-span-full flex flex-col items-center justify-center text-center py-10">
               <p className="text-white bg-black p-3 rounded-lg shadow-md">
-              There is no match in the city you entered
+                There is no match in the city you entered
               </p>
             </div>
           )}
         </div>
 
-        <button className="m-5 p-2  w-[12rem]  bg-stone-900 rounded-2xl font-perso text-white  mx-auto">
-          <Link to="/" className="hover:text-blue-200">
-            BACT TO HOME
+        <button className="m-5 p-2  w-[12rem]  bg-white rounded-2xl font-perso text-black mx-auto hover:bg-gray-200">
+          <Link to="/" className="font-extrabold">
+            BACk TO HOME
           </Link>
         </button>
-
       </section>
     </>
   );
