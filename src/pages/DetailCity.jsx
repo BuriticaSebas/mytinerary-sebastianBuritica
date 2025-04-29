@@ -35,7 +35,7 @@ const DetailCity = () => {
   };
 
 
-  const [like, setLike] = useState(0)
+  const [like, setLike] = useState({})
 
   const contadorLike = (id) => {
     setLike((prevLikes) => ({

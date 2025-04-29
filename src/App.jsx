@@ -4,7 +4,7 @@ import Home from "./pages/Home"
 import Cities from "./pages/Cities"
 import Login from "./pages/Login"
 import DetailCity from "./pages/DetailCity"
-
+import Register from "./pages/Register.jsx"
 const router = createBrowserRouter([
   { path: '/',
     element: <MainLayout/> ,
@@ -12,6 +12,7 @@ const router = createBrowserRouter([
       {path: "/" , element: <Home/>},
       {path: "/cities", element: <Cities/>},
       {path: "/login", element: <Login/>},
+      {path: "/register", element: <Register/>},
       {path: "/detailCity" , element: <DetailCity/> }
     ]
   }
