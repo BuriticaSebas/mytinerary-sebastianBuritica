@@ -20,7 +20,6 @@ function SectionCarrusel() {
     name: city.name,
   }));
 
-  console.log(cityData);
 
   const isMobile = useMediaQuery({ maxWidth: 639 });
   const itemsPerSlide = isMobile ? 1 : 4;

@@ -3,8 +3,7 @@ import axios from "axios";
 
 
 const getCities = createAsyncThunk('carrusel/getCities', async ()=>{
-    const response = await axios.get('https://mytinerary-back-jhosefburitica.onrender.com/mytinerary/city/allCities')
-    console.log("Ese es el array que devuelve", response.data)
+    const response = await axios.get('http://localhost:8080/mytinerary/city/allCities')
     return response.data.response; 
 
 })

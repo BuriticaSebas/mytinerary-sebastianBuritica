@@ -2,6 +2,14 @@ import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import Select from "react-select";
 import { Link } from "react-router-dom";
+import { registerrUser } from "../redux/actions/Auth";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { statusSoli } from "../redux/reducers/authR";
+import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
+import {resetStatusRegister} from "../redux/actions/resetStatus";
+
 export default function RegisterForm() {
   const {
     register,
@@ -10,11 +18,8 @@ export default function RegisterForm() {
     formState: { errors },
   } = useForm();
 
+  //-------------Logica para el select de los Paises-----------------------
   const [countryOptions, setCountryOptions] = useState([]);
-
-  const onSubmit = (data) => {
-    console.log("Datos enviados:", data);
-  };
 
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/region/americas")
@@ -38,7 +43,43 @@ export default function RegisterForm() {
     setValue("country", selectedOption?.value, { shouldValidate: true });
   };
 
+  //----------------------------------------------------------------------
+
+  const navigate = useNavigate();
+
+
+  const {registerr} = useSelector((state)=> state.auth)
+  const dispatch = useDispatch()
+
+  const onSubmit = (data) => {
+    
+    dispatch(registerrUser(data))  
+  };
+
+  useEffect(() => {
+    if (registerr.status === statusSoli.SUCCEDED) {
+      toast.success('You have successfully registered', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "light"
+      });
+
+      dispatch(resetStatusRegister()); 
+
+      setTimeout(() => {
+        navigate("/login");
+      }, 1000);
+    }
+  }, [registerr.status]);
+  
+
   return (
+    <>
+    <ToastContainer></ToastContainer>
     <div className="min-h-screen p-3 flex items-center justify-center bg-blue-100">
       <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
         <h2 className="text-2xl font-bold text-black text-center mb-6">
@@ -124,7 +165,8 @@ export default function RegisterForm() {
             type="submit"
             className="w-1/2 m-auto bg-black text-white py-2 px-4 rounded-md hover:bg-gray-600"
           >
-           <Link to = "/">Submit</Link>
+           Submit
+          
           </button>
         </form>
 
@@ -138,5 +180,7 @@ export default function RegisterForm() {
         </div>
       </div>
     </div>
+    </>
+    
   );
 }

@@ -1,5 +1,12 @@
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { loginUser } from '../redux/actions/Auth';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+
+
+
 export default function Login() {
   const {
     register,
@@ -7,11 +14,36 @@ export default function Login() {
     formState: { errors }
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log('Datos enviados:', data);
+  const navigate = useNavigate();
+
+
+  const {login} = useSelector((state)=> state.auth)
+  const dispatch = useDispatch()
+
+  const onSubmit = async (data) => {
+    
+    const resultAction = await dispatch(loginUser(data)) ;
+
+      if (loginUser.fulfilled.match(resultAction)){
+       
+          navigate("/")
+      }else{
+        toast.error('Hubo un error', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+      }
   };
 
   return (
+    <>
+        <ToastContainer></ToastContainer>
     <div className="min-h-screen p-3 flex items-center justify-center bg-blue-100">
       <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
         <h2 className="text-2xl font-bold text-black text-center mb-6">Sign In</h2>
@@ -52,7 +84,7 @@ export default function Login() {
             type="submit"
             className="w-1/2 m-auto bg-black text-white font-bold py-2 px-4 rounded-md hover:bg-gray-600 transition"
           >
-           <Link to = "/">Submit</Link>
+          Submit
            </button>
         </form>
 
@@ -62,6 +94,8 @@ export default function Login() {
         </div>
       </div>
     </div>
+    </>
+
   );
 }
 

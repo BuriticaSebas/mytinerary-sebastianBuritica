@@ -3,6 +3,8 @@ import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 
 function Header() {
+
+  
   return (
     <div className="relative w-full min-h-screen flex flex-col">
       <Navbar />
