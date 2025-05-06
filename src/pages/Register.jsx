@@ -80,7 +80,7 @@ export default function RegisterForm() {
   return (
     <>
     <ToastContainer></ToastContainer>
-    <div className="min-h-screen p-3 flex items-center justify-center bg-blue-100">
+    <div className="min-h-screen mt-6 p-3 flex items-center justify-center bg-blue-100">
       <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
         <h2 className="text-2xl font-bold text-black text-center mb-6">
           Sign Up

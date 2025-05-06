@@ -30,8 +30,8 @@ const loginUser = createAsyncThunk("auth/login", async (data) => {
     localStorage.setItem("lastnameuser", info.user.lastname)
     localStorage.setItem("emailUser", info.user.email)
     localStorage.setItem("photouser", info.user.urlPhoto)
-    localStorage.setItem("online", info.user.online)
-    
+    localStorage.setItem("online", JSON.stringify(info.user.online));
+
     return info;
 
   } catch (error) {

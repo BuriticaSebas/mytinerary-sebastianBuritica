@@ -23,6 +23,11 @@ const DetailCity = () => {
 
   const { itineraries, status } = useSelector((state) => state.itinerary);
   const { commentsByItinerary, createComment } = useSelector((state) => state.comments);
+  
+  const {login} = useSelector((state)=> state.auth)
+  
+  const online = login.online
+
 
   const {newItinerary} = useSelector((state)=> state.itinerary)
   
@@ -36,6 +41,10 @@ const DetailCity = () => {
   useEffect(()=>{
     dispatch(getItinerary(idCity));
   }, [newItinerary])
+
+  useEffect(()=>{
+    dispatch(getItinerary(idCity));
+  }, [online])
 
   const [openCardId, setOpenCardId] = useState(null);
 
@@ -112,7 +121,7 @@ const DetailCity = () => {
 
           <button
             className={`p-2 bg-black text-white rounded-lg mt-4 hover:bg-gray-300 hover:text-black  ${
-              localStorage.online ? "block" : "hidden"
+              online ? "block" : "hidden"
             }`}
             onClick={openModalItinerary}
           >
@@ -231,8 +240,9 @@ const DetailCity = () => {
                           )}
                         </div>
 
-                        <div className="relative">
-                          <input
+                        <div className="relative text-center">
+                          {online ? <>
+                            <input
                             type="text"
                             placeholder="comment"
                             className="bg-black w-full p-2 rounded-lg"
@@ -241,6 +251,13 @@ const DetailCity = () => {
                           <button onClick={() =>  dispatch(createComments(descriptionComment))}>
                             <IoSend className="absolute top-3 right-2 hover:text-yellow-200" />
                           </button>
+                          </> : 
+
+                          <button className="p-2 text-white bg-black rounded-lg">
+                            <Link to="/login">Login</Link>
+                          </button>
+                          }
+                          
                         </div>
                       </div>
                     )}

@@ -16,7 +16,7 @@ const initialState = {
     },
     login: {
         status: statusSoli.IDLE,
-        online: localStorage.getItem("online")
+        online:  JSON.parse(localStorage.getItem("online"))
     }
 };
 

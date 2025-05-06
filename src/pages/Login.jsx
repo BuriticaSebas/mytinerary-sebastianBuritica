@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 
 
-
 export default function Login() {
   const {
     register,
@@ -43,7 +42,7 @@ export default function Login() {
 
   return (
     <>
-        <ToastContainer></ToastContainer>
+      <ToastContainer></ToastContainer>
     <div className="min-h-screen p-3 flex items-center justify-center bg-blue-100">
       <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
         <h2 className="text-2xl font-bold text-black text-center mb-6">Sign In</h2>
